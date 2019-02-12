@@ -92,13 +92,13 @@ int main(int argc, char * argv[])
 
 unsigned char * readFile(char* inFile[], unsigned char * image)
 {
-	FILE *inFile = fopen(inFile, "rb");
-	fseek(inFile, 0, SEEK_END);
-	long fileLength = ftell(inFile);
-	fseek(inFile, 0, SEEK_SET);
+	FILE *file = fopen(inFile, "rb");
+	fseek(file, 0, SEEK_END);
+	long fileLength = ftell(file);
+	fseek(file, 0, SEEK_SET);
 	image = (unsigned char *)malloc(fileLength * sizeof(unsigned char));
-	fread(image, sizeof(unsigned char), fileLength, inFile);
-	fclose(inFile);
+	fread(image, sizeof(unsigned char), fileLength, file);
+	fclose(file);
 	return image;
 }
 
